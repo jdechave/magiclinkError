@@ -1,0 +1,147 @@
+@layer tailwind-base, primereact, tailwind-utilities;
+
+@layer tailwind-base {
+   @tailwind base;
+}
+
+@layer tailwind-utilities {
+   @tailwind components;
+   @tailwind utilities;
+}
+
+@layer base {
+   :root {
+      --primary: #65c3c8;
+      --secondary: #ff87c0;
+      --success: #95d7bb;
+      --info: #a9b1d6;
+      --warning: #ebe364;
+      --danger: #ff6f6f;
+      --light: #f6f6f6;
+      --dark: #262626;
+      --white: #ffffff;
+      --black: #000000;
+      --link: #3182ce;
+   }
+
+   /* @media (prefers-color-scheme: dark) {
+      :root {
+         --primary: "#ff87ad";
+         --secondary: "#ff87c0";
+         --success: "#95d7bb";
+         --info: "#a9b1d6";
+         --warning: "#ebe364";
+         --danger: "#ff6f6f";
+         --light: "#f6f6f6";
+         --dark: "#262626";
+         --white: "#ffffff";
+         --black: "#000000";
+         --link: "#3182ce";
+      }
+   } */
+}
+
+@layer components {
+   .input,
+   .select,
+   .textarea {
+      @apply h-8 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+   }
+
+   .select {
+      @apply pt-0;
+      min-height: 2rem;
+      padding-right: 2rem;
+   }
+
+   .btn {
+      @apply normal-case;
+   }
+
+   fieldset {
+      @apply flex flex-wrap gap-2  border border-primary p-3 rounded-lg w-full;
+   }
+
+   fieldset legend {
+      @apply px-2 font-medium;
+   }
+
+   .restui-table tr {
+      @apply hover:bg-gray-100 dark:hover:bg-gray-800 !important;
+   }
+
+   .no-spinner {
+      -moz-appearance: textfield;
+   }
+
+   .no-spinner::-webkit-outer-spin-button,
+   .no-spinner::-webkit-inner-spin-button {
+      margin: 0;
+      -webkit-appearance: none;
+   }
+
+   .question {
+      @apply grid grid-cols-1 mt-4 mb-1 w-max;
+
+      .quest-text {
+         @apply mb-2;
+      }
+
+      label {
+         @apply flex gap-x-2 items-center;
+      }
+
+      .quest-input {
+         @apply grid grid-cols-1;
+      }
+   }
+
+   .quest-group-side-by-side {
+      @apply grid grid-cols-2 gap-x-2 items-end;
+
+      .quest-input {
+         @apply flex gap-3;
+      }
+
+      label {
+         @apply flex flex-col-reverse items-center text-center;
+      }
+   }
+
+   .quest-value-label-top {
+      .q-inputs label {
+         @apply flex flex-col-reverse gap-1 justify-center items-center text-center;
+      }
+   }
+
+   .quest-group-shared-values-right {
+      @apply flex flex-col gap-1;
+
+      label {
+         @apply flex flex-col-reverse items-center;
+      }
+   }
+}
+
+code {
+   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.animate-in {
+   animation: animateIn 0.3s ease 0.15s both;
+}
+
+@keyframes animateIn {
+   from {
+      opacity: 0;
+      transform: translateY(10px);
+   }
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+::backdrop {
+   background-color: grey;
+}
