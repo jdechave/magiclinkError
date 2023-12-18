@@ -2,7 +2,7 @@
 import { createClient } from "@/app/(lib)/supabase/server"
 
 export const sendMagicLink = async (email: string, captchaToken: string) => {
-   const origin = process.env.NEXT_PUBLIC_REDIRECT_ORIGIN
+   const origin = "http://localhost:3000"
    const supabase = createClient()
 
    console.log("origin", origin)

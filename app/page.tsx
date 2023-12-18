@@ -34,7 +34,7 @@ export default function OTP() {
                      <TextInputFormik name="email" label="Email" formik={formikProps} />
                      <div className="m-2">
                         <HCaptcha
-                           sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY || ""}
+                           sitekey="416298bf-fbf9-4eba-a5e8-803089c9a6de"
                            onVerify={token => formikProps.setFieldValue("captchaToken", token)}
                         />
                      </div>
