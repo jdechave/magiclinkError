@@ -10,14 +10,16 @@ import HCaptcha from "@hcaptcha/react-hcaptcha"
 export default function OTP() {
    const initialFormValues = {
       email: "",
-      captchaToken: "",
+      // captchaToken: "",
       error: "",
       success: false
    }
-   const handleSubmit = async (values: OtpFormValues, { setFieldValue }: { setFieldValue: SetFieldValueFn }) => {
+   // const handleSubmit = async (values: OtpFormValues, { setFieldValue }: { setFieldValue: SetFieldValueFn }) => {
+   const handleSubmit = async (values: any, { setFieldValue }: { setFieldValue: SetFieldValueFn }) => {
       setFieldValue("error", "")
       try {
-         const { success } = await sendMagicLink(values.email, values.captchaToken)
+         // const { success } = await sendMagicLink(values.email, values.captchaToken)
+         const { success } = await sendMagicLink(values.email)
          if (success) return setFieldValue("success", true)
       } catch (error: any) {
          console.log(error)
@@ -28,16 +30,17 @@ export default function OTP() {
       <div className="flex-1 w-full flex flex-col items-center animate-in">
          <PageHeader title="Magic Link Invitation" />
          <Formik initialValues={initialFormValues} onSubmit={handleSubmit} validateOnChange={false} validateOnBlur={false}>
-            {(formikProps: FormikProps<OtpFormValues>) => {
+            {/* {(formikProps: FormikProps<OtpFormValues>) => { */}
+            {(formikProps: FormikProps<any>) => {
                return (
                   <Form className="flex-1 flex flex-col w-full justify-center gap-2 sm:max-w-md" noValidate>
                      <TextInputFormik name="email" label="Email" formik={formikProps} />
-                     <div className="m-2">
+                     {/* <div className="m-2">
                         <HCaptcha
                            sitekey="416298bf-fbf9-4eba-a5e8-803089c9a6de"
                            onVerify={token => formikProps.setFieldValue("captchaToken", token)}
                         />
-                     </div>
+                     </div> */}
                      <Button type="submit" color="primary" text="Send Magic Link" />
                   </Form>
                )
